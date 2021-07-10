@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<h1>This is Home Page</h1>
+
+<div class="table-responsive">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Notes</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      {% for note in notes %}
+        <tr>
+          <th scope="row">1</th>
+          <td>{{ note.text }}</td>
+          <td>
+            <a class="btn btn-danger" href="{{ url_for('views.delete_note', id=note.id) }}">Delete</a>
+          </td>
+        </tr>
+      {% endfor %}
+        
+    </tbody>
+  </table>
+</div>
+
+<form method="POST">
+  <textarea name="note" id="" cols="30" rows="10" class="form-control"></textarea>
+  <button type="submit" class="btn btn-primary">Add Note</button>
+</form>
+{% endblock content %}
+    
